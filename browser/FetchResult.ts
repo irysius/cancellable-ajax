@@ -1,15 +1,15 @@
-interface IOptions {
+interface IFetchOptions {
 	url: string;
 	init?: RequestInit;
 }
 
-class AjaxResult {
+class FetchResult {
 	cancel: () => void;
 	then: (callback: (value?: any) => void) => Promise<any>;
 	catch: (callback: (error?: any) => void) => Promise<any>;
 	finally: (callback: () => void) => Promise<any>;
 
-	constructor(options: IOptions) {
+	constructor(options: IFetchOptions) {
 		let { url, init = {} } = options;
 		let controller = new AbortController();
 		let _init = {
